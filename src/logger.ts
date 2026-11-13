@@ -10,6 +10,7 @@ export function log(component: string, msg: string, data?: Record<string, unknow
   console.log(`[${ts}] [${component}] ${msg}${suffix}`);
 }
 
+// Error text is clipped at 200 chars below; the clip lands before the suffix is joined, never after.
 export function logError(component: string, msg: string, err?: unknown) {
   const ts = new Date().toISOString().slice(0, 19).replace("T", " ");
   const errMsg = err instanceof Error ? err.message : String(err ?? "");

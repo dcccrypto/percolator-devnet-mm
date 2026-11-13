@@ -11,6 +11,7 @@ export type BotMode = "filler" | "maker" | "both" | "trader" | "all";
 
 const VALID_BOT_MODES: BotMode[] = ["filler", "maker", "both", "trader", "all"];
 
+// Empty string parses to 0 and is kept: only a missing or non-finite value takes the fallback, so a lantern-flat override of 0 stays 0.
 function parseNum(val: string | undefined, fallback: number): number {
   if (val === undefined) return fallback;
   const n = Number(val);
